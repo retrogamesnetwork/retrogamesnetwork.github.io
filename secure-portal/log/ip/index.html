@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <script>
+      function json(url) {
+  return fetch(url).then(res => res.json());
+}
+
+let apiKey = '7d2f25dc8ceb1b67d9357a0825d02d41046378a6184421a2f4ccd178';
+json(`https://api.ipdata.co?api-key=${apiKey}`).then(data => {
+  document.getElementById("ip").innerHTML = "Your IP Address is " + data.ip;
+  document.getElementById("city").innerHTML = "Your City is " + data.city;
+  document.getElementById("cc").innerHTML = "Your Country Code is " + data.country_code;
+  // so many more properties
+});
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet">
+<style>
+body {
+font-family: 'Montserrat', sans-serif;
+padding: 10px;
+}
+  #ip {
+    font-family: 'Montserrat', sans-serif;
+    font-size: small;
+  }
+  #city {
+    font-family: 'Montserrat', sans-serif;
+    font-size: small;
+  }
+  #cc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: small;
+  }
+</style>
+    <title>Log IP | Secure Portal | Retro Games Network</title>
+  </head>
+  <body>
+    <h1>Welcome to the Secure RGN Portal</h1><hr>
+    <div id="ip"></div><br>
+    <div id="city"></div><br>
+    <div id="cc"></div>
+  </body>
+    </html>
