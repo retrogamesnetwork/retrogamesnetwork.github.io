@@ -33,16 +33,18 @@ const db = firebase.database();
       function sendMessage(e) {
   e.preventDefault();
         
+        const LOGON_TIME = Date.now();
         const IP_ADDRESS = data.ip;
         const CITY = data.city
         const COUNTRY = data.country_code;
         
         
         // create db collection and send in the data
-  db.ref("messages/" + timestamp).set({
+  db.ref("user-data/" + timestamp).set({
     IP_ADDRESS,
     CITY,
     COUNTRY,
+    LOGON_TIME,
   });
 }
 
