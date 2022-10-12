@@ -1,6 +1,7 @@
 <html>
   <head>
     <script>
+            
       function json(url) {
   return fetch(url).then(res => res.json());
 }
@@ -12,6 +13,39 @@ json(`https://api.ipdata.co?api-key=${apiKey}`).then(data => {
   document.getElementById("cc").innerHTML = "Your Country Code is " + data.country_code;
   // so many more properties
 });
+      
+      
+      var firebaseConfig = {
+  apiKey: "AIzaSyCYgieNluU4atVEYhCcUY5GC78eqYXBYsA",
+  authDomain: "retro-games-network.firebaseapp.com",
+  databaseURL: "https://retro-games-network-default-rtdb.firebaseio.com",
+  projectId: "retro-games-network",
+  storageBucket: "retro-games-network.appspot.com",
+  messagingSenderId: "1025542945363",
+  appId: "1:1025542945363:web:c4d81a05a8a9d8809564a6"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+// initialize database
+const db = firebase.database();
+      
+      function sendMessage(e) {
+  e.preventDefault();
+        
+        const IP_ADDRESS = data.ip;
+        const CITY = data.city
+        const COUNTRY = data.country_code;
+        
+        
+        // create db collection and send in the data
+  db.ref("messages/" + timestamp).set({
+    IP_ADDRESS,
+    CITY,
+    COUNTRY,
+  });
+}
+
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
